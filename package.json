@@ -4,16 +4,15 @@
   "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/9O-uluRb)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently npm:dev:client npm:dev:server",
-    "dev:client": "cd client && npm run dev",
-    "dev:server": "cd server && npm run dev",
     "postinstall": "npm run install:client && npm run install:server",
     "install:client": "cd client && npm install --include=dev",
     "install:server": "cd server && npm install",
-    "build:client": "cd client && npm run build",
     "build": "npm run build:client",
-    "start": "cd server && npm start"
+    "start": "cd server && npm start",
+    "dev": "concurrently npm:dev:client npm:dev:server",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "build:client": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
