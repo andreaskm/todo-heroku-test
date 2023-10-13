@@ -14,7 +14,7 @@ export const todoApi = new express.Router();
 
 //Connect to database
 const url = process.env.MONGODB_URL;
-const client = new MongoClient("mongodb+srv://andreaskm12:uMBL0DUE7LwkDUJF@tododb.nex9ds5.mongodb.net/?retryWrites=true&w=majority");
+const client = new MongoClient(url);
 
 console.log("Server running on: http://localhost:" + port);
 
