@@ -2,6 +2,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import {MongoClient, ObjectId} from "mongodb";
+import * as path from "path";
+
+
+
 
 
 const app = express();
@@ -10,9 +14,13 @@ app.listen(3000);
 app.use(bodyParser.json());
 dotenv.config();
 
-export const todoApi = new express.Router();
-
-
+app.use((req,res,next)=> {
+    if(req.method === "GET" && !req.path.startsWith("/api")){
+        res.sendFile(path.resolve("../client/dist/index.html"));
+    }else{
+        next();
+    }
+})
 
 export const TODOS = [
     {
