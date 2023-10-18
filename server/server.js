@@ -14,7 +14,7 @@ export const todoApi = new express.Router();
 
 
 
-/*export const TODOS = [
+export const TODOS = [
     {
         id: 1,
         name: "Ta oppvasken server",
@@ -35,13 +35,13 @@ export const todoApi = new express.Router();
         name: "spise pizza",
         status: "done"
     }
-]*/
+]
 
-/*app.get("/api/todos", (req,res) =>{
+app.get("/api/todos", (req,res) =>{
     res.json(TODOS);
-})*/
+})
 //Add todo route
-/*app.post("/api/todos", (req,res)=>{
+app.post("/api/todos", (req,res)=>{
     const newTodo = req.body;
     console.log(newTodo)
 
@@ -52,10 +52,10 @@ export const todoApi = new express.Router();
     TODOS.push(newTodo);
     res.status(201).json(newTodo);
     res.send();
-})*/
+})
 
 //Add handle start doing
-/*app.post("/api/todos/start-doing/:id", (req,res) =>{
+app.post("/api/todos/start-doing/:id", (req,res) =>{
     const id = parseInt(req.params.id);
 
     const todo = TODOS.find(t=>t.id === id);
@@ -67,11 +67,11 @@ export const todoApi = new express.Router();
         res.status(404).json({error: "todo not found"})
     }
 
-})*/
+})
 
 //Add handle complete
 
-/*app.post("/api/todos/complete/:id", (req,res) =>{
+app.post("/api/todos/complete/:id", (req,res) =>{
     const id = parseInt(req.params.id);
 
     const todo = TODOS.find(t=>t.id === id);
@@ -83,8 +83,9 @@ export const todoApi = new express.Router();
     }else{
         res.status(404).json({error: "todo not found"})
     }
-})*/
+})
 
+/*
 //Connect to database
 const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
@@ -146,5 +147,5 @@ client.connect().then(connection => {
 })
 
 app.use(todoApi);
-
+*/
 
