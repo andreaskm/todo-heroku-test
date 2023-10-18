@@ -10,7 +10,7 @@ import * as path from "path";
 
 const app = express();
 app.use(express.static("../client/dist"));
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 app.use(bodyParser.json());
 dotenv.config();
 
