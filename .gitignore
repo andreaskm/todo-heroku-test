@@ -6,4 +6,4 @@
 /node_modules/
 
 /qodana.yaml
-/server/.env
+/server/.env/

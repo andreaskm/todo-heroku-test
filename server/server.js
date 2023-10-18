@@ -5,18 +5,89 @@ import {MongoClient, ObjectId} from "mongodb";
 
 
 const app = express();
-const port = process.env.PORT || 3000
-app.listen(port);
+app.use(express.static("../client/dist"));
+app.listen(3000);
 app.use(bodyParser.json());
 dotenv.config();
 
 export const todoApi = new express.Router();
 
+
+
+/*export const TODOS = [
+    {
+        id: 1,
+        name: "Ta oppvasken server",
+        status: "todo"
+    },
+    {
+        id: 2,
+        name: "Lage mock API",
+        status: "doing"
+    },
+    {
+        id: 3,
+        name: "sove",
+        status: "todo"
+    },
+    {
+        id: 4,
+        name: "spise pizza",
+        status: "done"
+    }
+]*/
+
+/*app.get("/api/todos", (req,res) =>{
+    res.json(TODOS);
+})*/
+//Add todo route
+/*app.post("/api/todos", (req,res)=>{
+    const newTodo = req.body;
+    console.log(newTodo)
+
+
+    newTodo.id = TODOS.length + 1;
+    newTodo.status = "todo";
+
+    TODOS.push(newTodo);
+    res.status(201).json(newTodo);
+    res.send();
+})*/
+
+//Add handle start doing
+/*app.post("/api/todos/start-doing/:id", (req,res) =>{
+    const id = parseInt(req.params.id);
+
+    const todo = TODOS.find(t=>t.id === id);
+
+    if (todo){
+        todo.status = "doing";
+        res.json(todo);
+    }else{
+        res.status(404).json({error: "todo not found"})
+    }
+
+})*/
+
+//Add handle complete
+
+/*app.post("/api/todos/complete/:id", (req,res) =>{
+    const id = parseInt(req.params.id);
+
+    const todo = TODOS.find(t=>t.id === id);
+
+    if (todo){
+        console.log(todo.name + " is now flagged as done")
+        todo.status = "done";
+        res.json(todo);
+    }else{
+        res.status(404).json({error: "todo not found"})
+    }
+})*/
+
 //Connect to database
 const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
-
-console.log("Server running on: http://localhost:" + port);
 
 client.connect().then(connection =>{
     console.log("Connecting...")
@@ -30,7 +101,7 @@ client.connect().then(connection =>{
 
     })
 })
-//update current todo in mongodb
+//updsate current todo in mongodb
 client.connect().then(connection => {
     console.log("Sending start doing")
     const db = connection.db("Todo_DB");
@@ -74,7 +145,6 @@ client.connect().then(connection => {
     })
 })
 
-app.use(express.static("../client/dist"));
 app.use(todoApi);
 
 
